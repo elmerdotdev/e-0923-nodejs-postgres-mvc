@@ -1,0 +1,13 @@
+// Create a new user in PostgreSQL
+CREATE ROLE mvcuser WITH LOGIN PASSWORD '12345';
+
+ALTER ROLE mvcuser CREATEDB;
+
+// Create a database (if you haven't yet) and switch to the db
+CREATE DATABASE mvc_db;
+\c mvc_db;
+
+// Grant privileges to new user
+GRANT ALL PRIVILEGES ON DATABASE mvc_db TO mvcuser;
+GRAMT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO mvcuser;
+GRANT USAGE, CREATE ON SCHEMA public TO mvcuser;
